@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.apps.poll.dao.ClazzMapper">
+  <select id="findAll" resultType="com.briup.apps.poll.bean.Clazz">
+    select * from poll_clazz
+  </select>
+  <delete id="deleteById" parameterType="long">
+    delete from poll_clazz where id= #{id}
+  </delete>
+  <insert id="save" parameterType="com.briup.apps.poll.bean.Clazz">
+    insert into poll_clazz values(null,#{name},#{description},#{grade_id},#{charge_id})
+  </insert>
+  <update id="update" parameterType="com.briup.apps.poll.bean.Clazz">
+    update poll_clazz set name=#{name},
+    description=#{description},
+    grade_id=#{grade_id},
+    charge_id=#{charge_id}
+    where id=#{id}
+  </update>
+</mapper>
