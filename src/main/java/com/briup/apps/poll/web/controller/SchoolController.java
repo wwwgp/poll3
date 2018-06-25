@@ -30,7 +30,7 @@ public class SchoolController {
 		return list;	
 	}
 	
-	@PostMapping("deleteSchoolById")
+	@GetMapping("deleteSchoolById")
 	public String deleteById(long id){
 		try {
 			schoolService.deleteById(id);

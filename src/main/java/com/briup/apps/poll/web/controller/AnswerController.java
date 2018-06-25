@@ -9,21 +9,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.briup.apps.poll.bean.User;
-import com.briup.apps.poll.service.IUserService;
+import com.briup.apps.poll.bean.Answer;
+import com.briup.apps.poll.service.IAnswerService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
+
+@Api(description="答案接口")
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/answer")
 
-public class UserController {
+public class AnswerController {
 	@Autowired
-	private IUserService userService;
+	private IAnswerService answerService;
 	
-	@GetMapping("findAllUser")
-	public List<User> findAllUser(){
-		List<User> list=new ArrayList<>();
+	@ApiModelProperty("查询所有答案")
+	@GetMapping("findAllAnswer")
+	public List<Answer> findAllAnswer(){
+		List<Answer> list=new ArrayList<>();
 		try {
-			 list=userService.findAll();
+			 list=answerService.findAll();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -31,10 +36,11 @@ public class UserController {
 		return list;
 	}
 	
-	@GetMapping("deleteUserById")
-	public String deleteById(long id){
+	@ApiModelProperty("删除答案信息")
+	@GetMapping("deleteAnswerById")
+	public String deleteAnswerById(long id){
 		try {
-			 userService.deleteById(id);
+			 answerService.deleteById(id);
 			 return "删除成功";
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -43,28 +49,30 @@ public class UserController {
 		}
 	}
 	
-	@PostMapping("saveUser")
-	public String save(User user){
+	@ApiModelProperty("保存答案信息")
+	@PostMapping("saveAnswer")
+	public String saveAnswer(Answer answer){
 		try {
-			 userService.save(user);
+			 answerService.save(answer);
 			 return "保存成功";
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 			return "保存失败"+e.getMessage();
 		}
-		
 	}
 	
-	@PostMapping("updateUser")
-	public String update(User user){
+	@ApiModelProperty("更新答案信息")
+	@PostMapping("updateAnswer")
+	public String updateAnswer(Answer answer){
 		try {
-			 userService.update(user);
-			 return "更新成功";
+			answerService.update(answer);
+			return "更新成功";
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 			return "更新失败"+e.getMessage();
 		}
 	}
+
 }

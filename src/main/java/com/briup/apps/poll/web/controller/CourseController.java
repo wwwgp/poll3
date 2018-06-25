@@ -37,7 +37,7 @@ public class CourseController {
 		}
 		}
 	@ApiOperation("删除课程信息")
-	@PostMapping("deleteCourseById")
+	@GetMapping("deleteCourseById")
 	public String deleteCourseById(long id){
 		//调用service层代码完成对课程信息的删除
 		try{

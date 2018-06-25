@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.briup.apps.poll.bean.Questionnaire;
 import com.briup.apps.poll.dao.QuestionnaireMapper;
-import com.briup.apps.poll.service.IQuestionService;
+import com.briup.apps.poll.service.IQuestionnaireService;
 
 @Service
-public class QuestionnaireServiceImpl implements IQuestionService{
+public class QuestionnaireServiceImpl implements IQuestionnaireService{
 	@Autowired
 	private QuestionnaireMapper  questionnaireMapper;
 	

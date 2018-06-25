@@ -30,7 +30,7 @@ public class ClazzController {
 		return list;
 	}
 	
-	@PostMapping("deleteClazzById")
+	@GetMapping("deleteClazzById")
 	public String deleteById(long id){
 		try {
 			 clazzService.deleteById(id);
